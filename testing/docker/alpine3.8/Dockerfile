@@ -8,7 +8,6 @@ RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositor
 RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories
 RUN apk update
 RUN apk add alpine-sdk wget xz git bash autoconf automake bison flex texinfo help2man gawk libtool ncurses-dev gettext-dev python-dev rsync
-RUN wget -O /sbin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64
-RUN chmod a+x /sbin/dumb-init
+RUN apk add dumb-init
 RUN echo 'export PATH=/opt/ctng/bin:$PATH' >> /etc/profile
 ENTRYPOINT [ "/sbin/dumb-init", "--" ]
